@@ -1,14 +1,9 @@
 class PetType {
-    constructor (species, temperament) {
-        this.species = species;  // This is a string
-        this.temperament =temperament; // This needs to be a 'Temperament' object
-    }
-}
-
-class Temperament {
-    constructor (affectionate, irritable, lazy, scruffy, greedy) {
-        // All these are simple numbers - say between 1 and 100
-        // These are intrinsic to the type of animal, so set them in the code
+    constructor (species, affectionate, irritable, lazy, scruffy, greedy) {
+        // This is a string
+        this.species = species;
+        // All these are simple numbers between 1 and 100
+        // They define the temperament of the animal
         this.affectionate = affectionate;
         this.irritable = irritable;
         this.lazy = lazy;
@@ -17,15 +12,11 @@ class Temperament {
     }
 }
 
-// Define some types of pets, with temperaments, as global variables.
-let crocTemp = new Temperament(0,100,70,50,80);
-let croc = new PetType("crocodile", crocTemp);
-let bunnyTemp = new Temperament(100,0,20,80,100);
-let bunny = new PetType("woodland bunny", bunnyTemp);
-let dogTemp = new Temperament(80,30,20,90,70);
-let dog = new PetType("dog", dogTemp);
-let catTemp = new Temperament(60,80,80,20,80);
-let cat = new PetType("cat", catTemp);
+// Define some types of pets, complete with temperaments, as global variables.
+let croc = new PetType("crocodile", 0,100,70,50,80);
+let bunny = new PetType("woodland bunny", 100,0,20,80,100);
+let dog = new PetType("dog", 80,30,20,90,70);
+let cat = new PetType("cat", 60,80,80,20,80);
 
 class  Mood {
     constructor (hungry, bored, dirty, angry, tired){
@@ -43,17 +34,17 @@ class  Mood {
 let startingMood = new Mood(50, 50, 50, 50, 50);
 
 class Cyberpet {
-    constructor (name, type, play, feed, clean) {
+    constructor (name, type) {
     this.name = name, // string name
     this.type = type, // PetType object: so far croc, bunny, dog or cat
 
     // These get set when the user calls a play/clean/feed function
-    this.play = play, // boolean, could poss set as true initially
-    this.feed = feed, // boolean
-    this.clean = clean, // boolean
+    this.play = true, // boolean, could poss set as true initially
+    this.feed = true, // boolean
+    this.clean = true, // boolean
 
     // mood gets calculated by status functions, and also gets referenced/queried by status functions
-    // some status functions might bite the user, to add a bit of a risk factor
+    // some status functions might bite the user, depending on result, to add a bit of a risk factor
     this.mood = startingMood, 
 
     // health gets worked out last
@@ -68,6 +59,7 @@ class Cyberpet {
     
     //
     // ACTION FUNCTIONS:
+    // I need to re-write them to refer to this.mood instead of this.health
     //
 
     //changes play false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
@@ -102,10 +94,10 @@ class Cyberpet {
 
 }
 
-let myCroc = new Cyberpet("Stanley", croc, true, true, true);
-let myBunny = new Cyberpet("Thumper", bunny, true, true, true);
-let myCat = new Cyberpet("Felix", cat, true, true, true);
-let myDog = new Cyberpet("Rover", dog, true, true, true);
+let myCroc = new Cyberpet("Stanley", croc);
+let myBunny = new Cyberpet("Thumper", bunny);
+let myCat = new Cyberpet("Felix", cat);
+let myDog = new Cyberpet("Rover", dog);
 console.log(myCroc);
 console.log(myBunny);
 console.log(myCat);
@@ -119,13 +111,11 @@ Cyberpet {
   name: 'Stanley',
   type: PetType {
     species: 'crocodile',
-    temperament: Temperament {
-      affectionate: 0,
-      irritable: 100,
-      lazy: 70,
-      scruffy: 50,
-      greedy: 80
-    }
+    affectionate: 0,
+    irritable: 100,
+    lazy: 70,
+    scruffy: 50,
+    greedy: 80
   },
   play: true,
   feed: true,
@@ -137,13 +127,11 @@ Cyberpet {
   name: 'Thumper',
   type: PetType {
     species: 'woodland bunny',
-    temperament: Temperament {
-      affectionate: 100,
-      irritable: 0,
-      lazy: 20,
-      scruffy: 80,
-      greedy: 100
-    }
+    affectionate: 100,
+    irritable: 0,
+    lazy: 20,
+    scruffy: 80,
+    greedy: 100
   },
   play: true,
   feed: true,
@@ -155,13 +143,11 @@ Cyberpet {
   name: 'Felix',
   type: PetType {
     species: 'cat',
-    temperament: Temperament {
-      affectionate: 60,
-      irritable: 80,
-      lazy: 80,
-      scruffy: 20,
-      greedy: 80
-    }
+    affectionate: 60,
+    irritable: 80,
+    lazy: 80,
+    scruffy: 20,
+    greedy: 80
   },
   play: true,
   feed: true,
@@ -173,13 +159,11 @@ Cyberpet {
   name: 'Rover',
   type: PetType {
     species: 'dog',
-    temperament: Temperament {
-      affectionate: 80,
-      irritable: 30,
-      lazy: 20,
-      scruffy: 90,
-      greedy: 70
-    }
+    affectionate: 80,
+    irritable: 30,
+    lazy: 20,
+    scruffy: 90,
+    greedy: 70
   },
   play: true,
   feed: true,
