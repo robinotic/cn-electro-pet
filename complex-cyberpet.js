@@ -111,5 +111,83 @@ console.log(myBunny);
 console.log(myCat);
 console.log(myDog);
 
+// When I run it using nodejs, I get the following output:
+
+/*
+
+Cyberpet {
+  name: 'Stanley',
+  type: PetType {
+    species: 'crocodile',
+    temperament: Temperament {
+      affectionate: 0,
+      irritable: 100,
+      lazy: 70,
+      scruffy: 50,
+      greedy: 80
+    }
+  },
+  play: true,
+  feed: true,
+  clean: true,
+  mood: Mood { hungry: 50, bored: 50, dirty: 50, angry: 50, tired: 50 },
+  health: 100
+}
+Cyberpet {
+  name: 'Thumper',
+  type: PetType {
+    species: 'woodland bunny',
+    temperament: Temperament {
+      affectionate: 100,
+      irritable: 0,
+      lazy: 20,
+      scruffy: 80,
+      greedy: 100
+    }
+  },
+  play: true,
+  feed: true,
+  clean: true,
+  mood: Mood { hungry: 50, bored: 50, dirty: 50, angry: 50, tired: 50 },
+  health: 100
+}
+Cyberpet {
+  name: 'Felix',
+  type: PetType {
+    species: 'cat',
+    temperament: Temperament {
+      affectionate: 60,
+      irritable: 80,
+      lazy: 80,
+      scruffy: 20,
+      greedy: 80
+    }
+  },
+  play: true,
+  feed: true,
+  clean: true,
+  mood: Mood { hungry: 50, bored: 50, dirty: 50, angry: 50, tired: 50 },
+  health: 100
+}
+Cyberpet {
+  name: 'Rover',
+  type: PetType {
+    species: 'dog',
+    temperament: Temperament {
+      affectionate: 80,
+      irritable: 30,
+      lazy: 20,
+      scruffy: 90,
+      greedy: 70
+    }
+  },
+  play: true,
+  feed: true,
+  clean: true,
+  mood: Mood { hungry: 50, bored: 50, dirty: 50, angry: 50, tired: 50 },
+  health: 100
+}
+
+*/
 
 
