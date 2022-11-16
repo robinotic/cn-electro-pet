@@ -1,7 +1,7 @@
 class PetType {
     constructor (species, temperament) {
-        this.species = species;
-        this.temperament =temperament; // This needs to be a 'Temperament' object;
+        this.species = species;  // This is a string
+        this.temperament =temperament; // This needs to be a 'Temperament' object
     }
 }
 
@@ -16,6 +16,16 @@ class Temperament {
         this.greedy = greedy;
     }
 }
+
+// Define some types of pets, with temperaments, as global variables.
+let crocTemp = new Temperament(0,100,70,50,80);
+let croc = new PetType("crocodile", crocTemp);
+let bunnyTemp = new Temperament(100,0,20,80,100);
+let bunny = new PetType("woodland bunny", bunnyTemp);
+let dogTemp = new Temperament(80,30,20,90,70);
+let dog = new PetType("dog", dogTemp);
+let catTemp = new Temperament(60,80,80,20,80);
+let cat = new PetType("cat", catTemp);
 
 class  Mood {
     constructor (hungry, bored, dirty, angry, tired){
@@ -35,7 +45,7 @@ let startingMood = new Mood(50, 50, 50, 50, 50);
 class Cyberpet {
     constructor (name, type, play, feed, clean) {
     this.name = name, // string name
-    this.type = type, // PetType object
+    this.type = type, // PetType object: so far croc, bunny, dog or cat
 
     // These get set when the user calls a play/clean/feed function
     this.play = play, // boolean, could poss set as true initially
@@ -50,13 +60,56 @@ class Cyberpet {
     // Only needs to be a simple number
     this.health = 100 // starts at full health
     }
-    */
-
-    }
 
     // So now we port the rest of the code here, making appropriate changes as we go.
     // I say 'we', I guess it's down to me for now. ;)
     // Give me another ten minutes! (or so)
- 
+
+    
+    //
+    // ACTION FUNCTIONS:
+    //
+
+    //changes play false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
+    playWithPet () {
+        this.play = true;
+        if (this.health < 90) this.health += 10;
+        else {
+            this.health = 100;
+            console.log(`${this.name} is so healthy he doen't really need any more play, but what the heck.`)
+        }
+    }
+
+    //changes feed false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
+    feedPet () {
+        this.food = true;
+        this.health += 10;
+        if (this.health > 100) {
+            this.health -= 20;
+            console.log(`${this.name} is being overfed and getting overweight!`);
+        }
+    }
+
+    //changes clean false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
+    cleanPet () {
+        this.clean = true;
+        if (this.health < 90) this.health += 10;
+        else { 
+            this.health = 100;
+            console.log(`${this.name} is now really, really clean, and in perfect health!`);
+        }
+   }
+
 }
+
+let myCroc = new Cyberpet("Stanley", croc, true, true, true);
+let myBunny = new Cyberpet("Thumper", bunny, true, true, true);
+let myCat = new Cyberpet("Felix", cat, true, true, true);
+let myDog = new Cyberpet("Rover", dog, true, true, true);
+console.log(myCroc);
+console.log(myBunny);
+console.log(myCat);
+console.log(myDog);
+
+
 
