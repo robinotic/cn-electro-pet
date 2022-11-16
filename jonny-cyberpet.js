@@ -59,12 +59,12 @@ class Cyberpet {
 
     //changes play false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
     playWithPet () {
-            this.play = true;
-            if (this.health < 90) this.health += 10;
-            else {
-                this.health = 100;
-                console.log(`${this.name} is so healthy he doen't really need any more play, but what the heck.`)
-            }
+        this.play = true;
+        if (this.health < 90) this.health += 10;
+        else {
+            this.health = 100;
+            console.log(`${this.name} is so healthy he doen't really need any more play, but what the heck.`)
+        }
     }
 
     //changes feed false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
@@ -81,7 +81,10 @@ class Cyberpet {
     cleanPet () {
         this.clean = true;
         if (this.health < 90) this.health += 10;
-        else console.log(`${this.type} is now really, really clean, and in perfect health!`)
+        else { 
+            this.health = 100;
+            console.log(`${this.name} is now really, really clean, and in perfect health!`);
+        }
    }
 
     // runs status functions, if reaches 0 declares cyberpet dead
@@ -97,13 +100,17 @@ class Cyberpet {
 
 }
 
-
 const jimmy = new Cyberpet ('jimmy', 'cat', false, false, false);
 const dave = new Cyberpet ('dave', 'dog', true, true, true);
 
 // tester scenarios ///////////////////// 
 
+//Blank lines
+console.log("\n=======================\n");
+
+//Jimmy
 console.log(jimmy);
+console.log();
 jimmy.cleanPet();
 jimmy.fullStatus();
 jimmy.feedPet();
@@ -124,4 +131,37 @@ jimmy.feedPet();
 jimmy.feedPet();
 jimmy.feedPet();
 jimmy.fullStatus();
+console.log();
 console.log(jimmy);
+
+//Blank lines
+console.log("\n=======================\n");
+
+//Dave
+console.log(dave);
+console.log();
+dave.cleanPet();
+dave.fullStatus();
+dave.feedPet();
+dave.feedPet();
+dave.fullStatus();
+dave.feedPet();
+dave.feedPet();
+dave.playWithPet();
+dave.fullStatus();
+dave.feedPet();
+dave.feedPet();
+dave.fullStatus();
+dave.feedPet();
+dave.feedPet();
+dave.feedPet();
+dave.feedPet();
+dave.feedPet();
+dave.feedPet();
+dave.feedPet();
+dave.fullStatus();
+console.log();
+console.log(dave);
+
+
+
