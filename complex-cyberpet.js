@@ -20,7 +20,7 @@ let cat = new PetType("cat", 60,80,80,20,80);
 
 class  Mood {
     constructor (hungry, bored, dirty, angry, tired){
-        // All these are simple numbers - say between 1 and 100
+        // All these are simple numbers between 1 and 100
         // These are dynamic state vars, so all get set by functions as the program runs
         this.hungry = hungry;
         this.bored = bored;
@@ -29,9 +29,6 @@ class  Mood {
         this.tired = tired;
     }
 }
-
-// Global variable
-let startingMood = new Mood(50, 50, 50, 50, 50);
 
 class Cyberpet {
     constructor (name, type) {
@@ -45,7 +42,7 @@ class Cyberpet {
 
     // mood gets calculated by status functions, and also gets referenced/queried by status functions
     // some status functions might bite the user, depending on result, to add a bit of a risk factor
-    this.mood = startingMood, 
+    this.mood = new Mood(50, 50, 50, 50, 50), 
 
     // health gets worked out last
     // Only needs to be a simple number
