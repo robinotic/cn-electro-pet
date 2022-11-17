@@ -18,7 +18,7 @@ let bunny = new PetType("woodland bunny", 10,1,2,8,10);
 let dog = new PetType("dog", 8,3,2,9,7);
 let cat = new PetType("cat", 6,8,8,2,8);
 
-class  Mood {
+class Mood {
     constructor (hungry, bored, dirty, angry, tired){
         // All these are simple numbers between 1 and 100
         // These are dynamic state vars, so all get set by functions as the program runs
@@ -59,7 +59,6 @@ class Cyberpet {
     
     //
     // ACTION FUNCTIONS:
-    // I need to re-write them to refer to this.mood instead of this.health
     //
 
     //changes feed false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
@@ -67,9 +66,10 @@ class Cyberpet {
         this.food = true;
         this.mood.hungry -= 2 * this.type.greedy;
         this.mood.tired -= 2 * this.type.lazy;
+        this.mood.angry -= 100;
 
         this.mood.angry = this.mood.hungry + this.mood.bored + this.mood.tired + this.mood.dirty;
-        this.mood.angry *= this.type.irritable;
+        this.mood.angry *= Math.floor(this.type.irritable/3);
 
         this.health += 10;
         if (this.health > 100) {
@@ -82,9 +82,15 @@ class Cyberpet {
     cleanPet () {
         this.clean = true;
         this.mood.dirty -= 2 * this.type.scruffy;
+        this.mood.tired += 3 * this.type.lazy;
 
         this.mood.angry = this.mood.hungry + this.mood.bored + this.mood.tired + this.mood.dirty;
-        this.mood.angry *= this.type.irritable;
+        this.mood.angry *= Math.floor(this.type.irritable/3);
+
+        if (this.mood.angry > 500) {
+            console.log(`Ouch! ${this.name} the ${this.type.species} just bit you!`);
+            console.log(`Maybe you should feed him?`);
+        }
 
         if (this.health < 90) this.health += 10;
         else { 
@@ -97,10 +103,15 @@ class Cyberpet {
     playWithPet () {
         this.play = true;
         this.mood.bored -= 2 * this.type.affectionate;
-        this.mood.tired += 2 * this.type.lazy;
+        this.mood.tired += 3 * this.type.lazy;
 
         this.mood.angry = this.mood.hungry + this.mood.bored + this.mood.tired + this.mood.dirty;
-        this.mood.angry *= this.type.irritable;
+        this.mood.angry *= Math.floor(this.type.irritable/3);
+
+        if (this.mood.angry > 500 && this.mood.tired > 70) {
+            console.log(`Ouch! ${this.name} the ${this.type.species} just bit you!`);
+            console.log(`Maybe play with him later?`);
+        }
 
         if (this.health < 90) this.health += 10;
         else {
