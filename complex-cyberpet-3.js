@@ -33,6 +33,9 @@ class Mood {
     }
 }
 
+// Global array of pet images
+let petImages = ["happy.jpg","miffed.jpg","concerned.jpg","unhappy.jpg","unhealthy.jpg","lastlegs.jpg","dead.jpg"];
+
 class Cyberpet {
     constructor (name, type) {
     this.name = name,
@@ -51,13 +54,15 @@ class Cyberpet {
     // Only needs to be a simple number
     this.health = 100 // This could be made into a virtual attribute, I think.
     this.scorevar = 0; // Use getter and setter methods for this var.
+    
+    this.petImage = petImages[0];
     }
 
     //
     // GETTERS AND SETTERS
     // use this.score to reference Cyberpet.scorevar
     //
-    get score(tmpvar) {
+    get score() {
         // Do funcky stuff here
         return this.scorevar;
     }
@@ -72,7 +77,7 @@ class Cyberpet {
 
     //changes feed false to true, adds 10 health-capped at 100 /// may modify for dog/not dog
     feedPet () {
-        this.food = true;
+        this.feed = true;
         this.mood.hungry -= 2 * this.type.greedy;
         this.mood.tired -= 2 * this.type.lazy;
         this.mood.angry -= 100;
@@ -136,6 +141,8 @@ class Cyberpet {
     //
     tick() {
         // Gets called regularly by a timer and modifies this.health.
+        
+        // Adapted from Digby's code
         window.setTimeout(() => {
 
             this.mood.hungry += 10;
@@ -147,31 +154,28 @@ class Cyberpet {
             this.health -=10;
             this.score += this.health;
             
+            if (this.health < 100) {
+                this.petImage = petImages[1];
+            } else if (this.health < 80) {
+                this.petImage = petImages[2];
+            } else if (this.health < 60) {
+                this.petImage = petImages[3];
+            } else if (this.health < 40) {
+                this.petImage = petImages[4];
+            } else if (this.health < 20) {
+                this.petImage = petImages[5];
+            } else {
+                this.petImage = petImages[petImages.length];
+            }
+            
         }, 1000);
-
-    /*    
-    const timingFunction = () => {
-        window.setTimeout(() => {
-            pet.hunger -= 2;
-            pet.thirst -= 2;
-            pet.happiness -= 2;
-            pet.health -= 2;
-            renderData();
-            timingFunction();
-        }, 5000)
     }
-    timingFunction();
 
-    function checkCondition() {
-        if (pet.health <= 30) {
-            petimg.src ="./images/pikahppy.png"
-        } else {
-            petimg.src = "./images/pikasad.png"
-        }
-    }       
-    */        
+    // Still not sure what to do here. Need to call the function somewhere.
+    // Not from the terminal though, since need 'window' too be defined.
+    
+    // this.tick();
 
-    }
 }
 
     
