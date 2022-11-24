@@ -136,11 +136,45 @@ class Cyberpet {
     //
     tick() {
         // Gets called regularly by a timer and modifies this.health.
-        this.health -=10;
-        this.score += this.health;
+        window.setTimeout(() => {
+
+            this.mood.hungry += 10;
+            this.mood.dirty += 10;
+            this.mood.bored += 10;
+            this.mood.tired += 10;
+            this.mood.angry += 10;
+            
+            this.health -=10;
+            this.score += this.health;
+            
+        }, 1000);
+
+    /*    
+    const timingFunction = () => {
+        window.setTimeout(() => {
+            pet.hunger -= 2;
+            pet.thirst -= 2;
+            pet.happiness -= 2;
+            pet.health -= 2;
+            renderData();
+            timingFunction();
+        }, 5000)
+    }
+    timingFunction();
+
+    function checkCondition() {
+        if (pet.health <= 30) {
+            petimg.src ="./images/pikahppy.png"
+        } else {
+            petimg.src = "./images/pikasad.png"
+        }
+    }       
+    */        
+
     }
 }
 
+    
 let myCroc = new Cyberpet("Stanley", croc);
 let myBunny = new Cyberpet("Thumper", bunny);
 let myCat = new Cyberpet("Felix", cat);
